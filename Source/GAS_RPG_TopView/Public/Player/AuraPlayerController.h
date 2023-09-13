@@ -34,5 +34,5 @@ private:
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<UInputAction> MoveAction;
 
-	void Move(const struct FInputActionValue& InputActionValue);
+	void Move(const FInputActionValue& InputActionValue);
 };

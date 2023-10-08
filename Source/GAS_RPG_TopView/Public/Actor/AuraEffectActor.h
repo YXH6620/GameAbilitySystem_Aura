@@ -3,10 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ActiveGameplayEffectHandle.h"
 #include "GameFramework/Actor.h"
 #include "AuraEffectActor.generated.h"
 
-
+class UAbilitySystemComponent;
 class UGameplayEffect;
 
 UENUM(Blueprintable)
@@ -50,7 +51,7 @@ protected:
 	// flag
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Apply Effects")
 	bool bDestroyOnEffectRemoval = false;
-
+	
 	// Effect Class
 		// Instant
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Apply Effects")
@@ -73,4 +74,7 @@ protected:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Apply Effects")
 	EEffectRemovalPolicy InfiniteEffectRemovalPolicy = EEffectRemovalPolicy::RemoveOnEndOverlap;
+
+	// TMap
+	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
 };

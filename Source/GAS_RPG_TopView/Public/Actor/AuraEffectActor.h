@@ -78,4 +78,8 @@ protected:
 
 	// TMap
 	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
+
+	// Curve Level
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Apply Effects")
+	float ActorLevel = 1.f;
 };

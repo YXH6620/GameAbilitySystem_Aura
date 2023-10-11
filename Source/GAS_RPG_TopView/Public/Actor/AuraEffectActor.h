@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "ActiveGameplayEffectHandle.h"
 #include "GameFramework/Actor.h"
+#include "GameplayEffectTypes.h"
 #include "AuraEffectActor.generated.h"
 
 class UAbilitySystemComponent;
@@ -42,10 +43,10 @@ protected:
 	void ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass);
 
 	// Overlap events
-	UFUNCTION(Blueprintable)
+	UFUNCTION(BlueprintCallable)
 	void OnOverlap(AActor* TargetActor);
 
-	UFUNCTION(Blueprintable)
+	UFUNCTION(BlueprintCallable)
 	void OnEndOverlap(AActor* TargetActor);
 
 	// flag

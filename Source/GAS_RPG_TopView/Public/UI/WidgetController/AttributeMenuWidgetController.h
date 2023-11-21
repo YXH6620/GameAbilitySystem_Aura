@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType, Blueprintable)
 class GAS_RPG_TOPVIEW_API UAttributeMenuWidgetController : public UAuraWidgetController
 {
 	GENERATED_BODY()

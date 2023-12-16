@@ -146,6 +146,14 @@ public:
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Mana);
 
 	/*
+	 *	Meta Damage
+	 */
+
+	UPROPERTY(BlueprintReadOnly, Category = "Meta Damage")
+	FGameplayAttributeData IncomingDamage;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, IncomingDamage);
+	
+	/*
 	 * OnRep
 	 */
 	

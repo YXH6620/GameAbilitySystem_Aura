@@ -9,6 +9,7 @@
 #include "AbilitySystemComponent.h"
 #include "AuraGameplayTags.h"
 #include "Actor/AuraProjectile.h"
+#include "Chaos/Pair.h"
 #include "Interaction/CombatInterface.h"
 
 
@@ -64,10 +65,14 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 		const FGameplayEffectSpecHandle SpecHandle = SourceASC->MakeOutgoingSpec(DamageEffectClass, GetAbilityLevel(), EffectContextHandle);
 		
 		const FAuraGameplayTags GameplayTags = FAuraGameplayTags::Get();
-		const float ScaleDamage = Damage.GetValueAtLevel(GetAbilityLevel());
-		UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle, GameplayTags.Damage, ScaleDamage);
+
+		for(auto& pair : DamageTypes)
+		{
+			const float ScaleDamage = pair.Value.GetValueAtLevel(GetAbilityLevel());
+			UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle, pair.Key, ScaleDamage);
+		}
+		
 		Projectile->DamageEffectSpecHandle = SpecHandle;
-		GEngine->AddOnScreenDebugMessage(0,3.f,FColor::Red, FString::Printf(TEXT("%f"), ScaleDamage));
 		
 		Projectile->FinishSpawning(SpawnTransform);
 	}

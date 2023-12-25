@@ -64,9 +64,14 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 	EvaluateParameters.TargetTags = TargetTags;
 
 	// Get Damage Set by Caller Magnitude
-	float Damage = Spec.GetSetByCallerMagnitude(FAuraGameplayTags::Get().Damage);
-	// Capture BlockChange on Target, and determine if there was a successful Block
+	float Damage = 0.f;
+	for(FGameplayTag DamageTypeTag : FAuraGameplayTags::Get().DamageTypes)
+	{
+		const float DamageTypeValue = Spec.GetSetByCallerMagnitude(DamageTypeTag.GetTagName());
+		Damage += DamageTypeValue;
+	}
 	
+	// Capture BlockChange on Target, and determine if there was a successful Block
 	float TargetBlockChance = 0.f;
 	ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(DamageStatics().BlockChanceDef, EvaluateParameters, TargetBlockChance);
 	TargetBlockChance = FMath::Max<float>(TargetBlockChance, 0.f);

@@ -51,7 +51,10 @@ protected:
 
 	// flag
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Apply Effects")
-	bool bDestroyOnEffectRemoval = false;
+	bool bDestroyOnEffectApplication = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Apply Effects")
+	bool bApplyEffectsToEnemies = false;
 	
 	// Effect Class
 		// Instant

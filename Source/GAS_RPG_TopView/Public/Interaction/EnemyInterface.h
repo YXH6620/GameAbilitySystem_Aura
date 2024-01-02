@@ -25,5 +25,9 @@ public:
 	virtual void HighlightActor() = 0;
 	virtual void UnHighlightActor() = 0;
 
-	
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetCombatInterface(AActor* InCombatInterface);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	AActor* GetCombatTarget() const;
 };

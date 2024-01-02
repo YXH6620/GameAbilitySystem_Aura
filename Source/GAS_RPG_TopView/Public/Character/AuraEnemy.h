@@ -32,7 +32,12 @@ public:
 	/** Combat Interface **/
 	virtual int32 GetPlayerLevel() override;
 	virtual void Die() override;
+	virtual void SetCombatInterface_Implementation(AActor* InCombatInterface) override;
+	virtual AActor* GetCombatTarget_Implementation() const override;
 	/** End Combat Interface **/
+
+	UPROPERTY(BlueprintReadWrite, Category = "Combat")
+	TObjectPtr<AActor> CombatTarget;
 
 	UPROPERTY(BlueprintAssignable)
 	FOnAtrributeChangedSignature OnHealthChanged;

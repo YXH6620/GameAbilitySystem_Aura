@@ -78,6 +78,16 @@ void AAuraEnemy::Die()
 	Super::Die();
 }
 
+void AAuraEnemy::SetCombatInterface_Implementation(AActor* InCombatInterface)
+{
+	CombatTarget = InCombatInterface;
+}
+
+AActor* AAuraEnemy::GetCombatTarget_Implementation() const
+{
+	return CombatTarget;
+} 
+
 void AAuraEnemy::BeginPlay()
 {
 	Super::BeginPlay();
